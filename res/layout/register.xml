@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/emailText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/text"
+        android:layout_below="@+id/text"
+        android:layout_marginLeft="36dp"
+        android:layout_marginTop="108dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        android:hint="email" >
+
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/passwordText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/emailText"
+        android:layout_below="@+id/emailText"
+        android:ems="10"
+        android:inputType="textPassword" 
+        android:hint="password"/>
+
+    <EditText
+        android:id="@+id/confirmpassText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/passwordText"
+        android:layout_below="@+id/passwordText"
+        android:ems="10"
+        android:inputType="textPassword" 
+        android:hint="confirm password"/>
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/emailText"
+        android:layout_below="@+id/confirmpassText"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/signup_btn" />
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="42dp"
+        android:layout_marginTop="42dp"
+        android:text="Kindly provide your details below" />
+
+</RelativeLayout>
