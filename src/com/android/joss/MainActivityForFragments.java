@@ -1,5 +1,6 @@
 package com.android.joss;
 
+import com.actionbarsherlock.app.ActionBar;
 import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
@@ -26,9 +27,11 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 	String[] title;
 	String[] subtitle;
 	int[] icon;
-	Fragment fragment1 = new Fragment1();
-	Fragment fragment2 = new Fragment2();
-	Fragment fragment3 = new Fragment3();
+	Fragment summary = new Summaryfragment();
+	Fragment preference = new Preferencesfragment();
+	Fragment login = new Loginfragment();
+	Fragment dashboardfragment = new DashboardFragment();
+	Fragment comparefragment = new CompareFragment();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -36,16 +39,15 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 		setContentView(R.layout.drawer_main);
 
 		// Generate title
-		title = new String[] { "Title Fragment 1", "Title Fragment 2",
-				"Title Fragment 3" };
+		title = new String[] {"    " +"Dashboard","    " + "Preferences",
+				"    " +"Logout","    " +"My shopping Cart" ,"    " +"My shopping Cart","    " +"Comparison"};
 
 		// Generate subtitle
-		subtitle = new String[] { "Subtitle Fragment 1", "Subtitle Fragment 2",
-				"Subtitle Fragment 3" };
+		subtitle = new String[] { "", ""," ","" ,"",""};
 
 		// Generate icon
-		icon = new int[] { R.drawable.action_about, R.drawable.action_settings,
-				R.drawable.collections_cloud };
+		icon = new int[] { R.drawable.dashboard, R.drawable.preferences_icon,
+				R.drawable.loginnow ,R.drawable.shoping_icons,R.drawable.kompare,R.drawable.dashboard};
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -68,13 +70,18 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 		mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 
 		// Enable ActionBar app icon to behave as action to toggle nav drawer
-		getSupportActionBar().setHomeButtonEnabled(true);
+		getSupportActionBar().setHomeButtonEnabled(false);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().setIcon(R.color.abs__bright_foreground_holo_light);
+		getSupportActionBar().setDisplayShowTitleEnabled(false);
+		
+	
+		
 
 		// ActionBarDrawerToggle ties together the the proper interactions
 		// between the sliding drawer and the action bar app icon
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, R.string.drawer_open,
+				R.drawable.dashboard, R.string.drawer_open,
 				R.string.drawer_close) {
 
 			public void onDrawerClosed(View view) {
@@ -89,15 +96,20 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 		};
 
 		mDrawerLayout.setDrawerListener(mDrawerToggle);
-
-		if (savedInstanceState == null) {
-			selectItem(0);
+		
+		//The fragment to loaded when the app is first launched
+	if (savedInstanceState == null) {
+			selectItem(3);
 		}
 	}
+	
+	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getSupportMenuInflater().inflate(R.menu.main, menu);
+		getSupportMenuInflater().inflate(R.menu.activity_itemlist, menu);
+		
+		//menu.hasVisibleItems();
 		return true;
 	}
 
@@ -112,10 +124,26 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 				mDrawerLayout.openDrawer(mDrawerList);
 			}
 		}
+		
+		if (item.getItemId()==R.id.login) {
+			// Create new fragment and transaction
+			Fragment regester = new RegisterFragment();
+			FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
+			// Replace whatever is in the fragment_container view with this fragment,
+			// and add the transaction to the back stack
+			transaction.replace(R.id.content_frame, login);
+			transaction.addToBackStack(null);
+
+			// Commit the transaction
+			transaction.commit();
+
+		}
 
 		return super.onOptionsItemSelected(item);
 	}
-
+  
+	
 	// The click listener for ListView in the navigation drawer
 	private class DrawerItemClickListener implements
 			ListView.OnItemClickListener {
@@ -126,19 +154,28 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 		}
 	}
 
-	private void selectItem(int position) {
+	public void selectItem(int position) {
 
-		FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+	 FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
 		// Locate Position
 		switch (position) {
 		case 0:
-			ft.replace(R.id.content_frame, fragment1);
+			ft.replace(R.id.content_frame, dashboardfragment);
 			break;
 		case 1:
-			ft.replace(R.id.content_frame, fragment2);
+			ft.replace(R.id.content_frame, preference);
 			break;
 		case 2:
-			ft.replace(R.id.content_frame, fragment3);
+			ft.replace(R.id.content_frame, login);
+			break;
+		case 3:
+			ft.replace(R.id.content_frame, dashboardfragment);
+			break;
+		case 4:
+			ft.replace(R.id.content_frame, comparefragment);
+			break;
+		case 5:
+			ft.replace(R.id.content_frame, summary);
 			break;
 		}
 		ft.commit();
