@@ -14,12 +14,12 @@
         android:label="@string/app_name"
         android:theme="@style/Theme.Example" >
         <activity
-            android:name="com.android.joss.MainActivity"
+            android:name="com.android.joss.DashboardFragment"
             android:label="@string/app_name" >
             
         </activity>
         <activity
-            android:name="com.android.joss.Register"
+            android:name="com.android.joss.RegisterFragment"
             >
             
         </activity>
@@ -34,7 +34,7 @@
             
         </activity>
          <activity
-            android:name="com.android.joss.Compare"
+            android:name="com.android.joss.CompareFragment"
             >
             
         </activity>
