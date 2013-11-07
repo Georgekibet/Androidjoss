@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RHE"
+    style="@style/ActionBar.Transparent.Example"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="5dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginRight="10dp"
+    android:layout_weight="1"
+    android:padding="10dp" >
+
+    <TableRow
+        style="@style/ActionBar.Transparent.Example"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:id="@+id/runLabel"
+            
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:layout_marginRight="20dp"
+            android:text="Product A" />
+
+        <TextView
+            android:id="@+id/hitLabel"
+            
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:text="Serving" />
+
+        <TextView
+            android:id="@+id/errorLabel"
+
+            android:layout_height="wrap_content"
+            android:paddingRight="20dp"
+            android:text="Product B" />
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+        <Button
+            android:id="@+id/proteinmore"
+            android:background="@drawable/redbtn_smallest"
+            android:textColor="#FFFF"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:text="48g" />
+           
+       
+         <Button
+            android:id="@+id/servingprotein"
+           android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            
+            android:text="Serving" />
+
+        <Button
+            android:id="@+id/protainless"
+            android:layout_width="wrap_content"
+            android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:text="45g" />
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content"
+        android:layout_marginTop="10dp" >
+
+       <Button
+            android:id="@+id/carbsmore"
+           android:background="@drawable/redbtn_smallest"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+       
+        <Button
+            android:id="@+id/servingcarbs"
+           android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:text="Carbs" />
+
+        <Button
+            android:id="@+id/carbsless"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:text="0" />
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content"
+         android:layout_marginTop="10dp"  >
+
+       <Button
+            android:id="@+id/fatmore"
+            android:background="@drawable/redbtn_smallest"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content"
+            android:text="0" />
+
+       
+        <Button
+            android:id="@+id/servingfat"
+          android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:text="Fat" 
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"/>
+
+        <Button
+            android:id="@+id/fatless"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:text="0" />
+    </TableRow>
+
+    <TableRow android:layout_height="wrap_content" 
+         android:layout_marginTop="10dp" >
+
+<Button
+            android:id="@+id/colestrolmore"
+            android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp" />
+
+       
+        <Button
+            android:id="@+id/servingcolestrol"
+           android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:text="Calories" />
+
+        <Button
+            android:id="@+id/colestrolless"
+            android:background="@drawable/redbtn_smallest"
+            android:layout_height="wrap_content"
+            android:textColor="#ffff"
+            android:layout_marginRight="10dp"
+            android:text="0" />
+    </TableRow>
+
+</TableLayout>
