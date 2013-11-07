@@ -32,6 +32,7 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 	Fragment login = new Loginfragment();
 	Fragment dashboardfragment = new DashboardFragment();
 	Fragment comparefragment = new CompareFragment();
+	Fragment scan = new Snapfragment();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -40,14 +41,16 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 
 		// Generate title
 		title = new String[] {"    " +"Dashboard","    " + "Preferences",
-				"    " +"Logout","    " +"My shopping Cart" ,"    " +"My shopping Cart","    " +"Comparison"};
+				"    " +"Logout","    " +"My shopping Cart" ,
+				"    " +"My shopping Cart","    " +"Comparison","    " +"Scan products"};
 
 		// Generate subtitle
-		subtitle = new String[] { "", ""," ","" ,"",""};
+		subtitle = new String[] { "", ""," ","" ,"","",""};
 
 		// Generate icon
 		icon = new int[] { R.drawable.dashboard, R.drawable.preferences_icon,
-				R.drawable.loginnow ,R.drawable.shoping_icons,R.drawable.kompare,R.drawable.dashboard};
+				R.drawable.loginnow ,R.drawable.shoping_icons,
+				R.drawable.kompare,R.drawable.dashboard,R.drawable.qr_code};
 
 		// Locate DrawerLayout in drawer_main.xml
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -176,6 +179,9 @@ public class MainActivityForFragments extends SherlockFragmentActivity {
 			break;
 		case 5:
 			ft.replace(R.id.content_frame, summary);
+			break;
+		case 6:
+			ft.replace(R.id.content_frame, scan);
 			break;
 		}
 		ft.commit();

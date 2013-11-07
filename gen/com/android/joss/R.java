@@ -819,51 +819,54 @@ containing a value of this type.
         public static final int exit=0x7f02006d;
         public static final int gestureworks=0x7f02006e;
         public static final int gradirnt=0x7f02006f;
-        public static final int greenbtn=0x7f020070;
-        public static final int greenbtn_small=0x7f020071;
-        public static final int greenbtn_smallest=0x7f020072;
-        public static final int greybtn_smallest=0x7f020073;
-        public static final int home_blue=0x7f020074;
-        public static final int ic_action_search=0x7f020075;
-        public static final int ic_drawer=0x7f020076;
-        public static final int ic_launcher=0x7f020077;
-        public static final int kompare=0x7f020078;
-        public static final int list_focused_example=0x7f020079;
-        public static final int login_icon=0x7f02007a;
-        public static final int loginnow=0x7f02007b;
-        public static final int menu_dropdown_panel_example=0x7f02007c;
-        public static final int modalbckg=0x7f02007d;
-        public static final int new_img=0x7f02007e;
-        public static final int new_signup=0x7f02007f;
-        public static final int one=0x7f020080;
-        public static final int one_page=0x7f020081;
-        public static final int preference=0x7f020082;
-        public static final int preferences_icon=0x7f020083;
-        public static final int pressed_background_example=0x7f020084;
-        public static final int progress_bg_example=0x7f020085;
-        public static final int progress_horizontal_example=0x7f020086;
-        public static final int progress_primary_example=0x7f020087;
-        public static final int progress_secondary_example=0x7f020088;
-        public static final int redbtn=0x7f020089;
-        public static final int redbtn_smallest=0x7f02008a;
-        public static final int save=0x7f02008b;
-        public static final int selectable_background_example=0x7f02008c;
-        public static final int shoping_cart=0x7f02008d;
-        public static final int shoping_icons=0x7f02008e;
-        public static final int signup_btn=0x7f02008f;
-        public static final int spinner_ab_default_example=0x7f020090;
-        public static final int spinner_ab_disabled_example=0x7f020091;
-        public static final int spinner_ab_focused_example=0x7f020092;
-        public static final int spinner_ab_pressed_example=0x7f020093;
-        public static final int spinner_background_ab_example=0x7f020094;
-        public static final int tab_indicator_ab_example=0x7f020095;
-        public static final int tab_selected_example=0x7f020096;
-        public static final int tab_selected_focused_example=0x7f020097;
-        public static final int tab_selected_pressed_example=0x7f020098;
-        public static final int tab_unselected_example=0x7f020099;
-        public static final int tab_unselected_focused_example=0x7f02009a;
-        public static final int tab_unselected_pressed_example=0x7f02009b;
-        public static final int two_page=0x7f02009c;
+        public static final int greedbg=0x7f020070;
+        public static final int greenbtn=0x7f020071;
+        public static final int greenbtn_small=0x7f020072;
+        public static final int greenbtn_smallest=0x7f020073;
+        public static final int greybg=0x7f020074;
+        public static final int greybtn_smallest=0x7f020075;
+        public static final int home_blue=0x7f020076;
+        public static final int ic_action_search=0x7f020077;
+        public static final int ic_drawer=0x7f020078;
+        public static final int ic_launcher=0x7f020079;
+        public static final int kompare=0x7f02007a;
+        public static final int list_focused_example=0x7f02007b;
+        public static final int login_icon=0x7f02007c;
+        public static final int loginnow=0x7f02007d;
+        public static final int menu_dropdown_panel_example=0x7f02007e;
+        public static final int modalbckg=0x7f02007f;
+        public static final int new_img=0x7f020080;
+        public static final int new_signup=0x7f020081;
+        public static final int one=0x7f020082;
+        public static final int one_page=0x7f020083;
+        public static final int preference=0x7f020084;
+        public static final int preferences_icon=0x7f020085;
+        public static final int pressed_background_example=0x7f020086;
+        public static final int progress_bg_example=0x7f020087;
+        public static final int progress_horizontal_example=0x7f020088;
+        public static final int progress_primary_example=0x7f020089;
+        public static final int progress_secondary_example=0x7f02008a;
+        public static final int qr_code=0x7f02008b;
+        public static final int redbtn=0x7f02008c;
+        public static final int redbtn_smallest=0x7f02008d;
+        public static final int save=0x7f02008e;
+        public static final int selectable_background_example=0x7f02008f;
+        public static final int shoping_cart=0x7f020090;
+        public static final int shoping_icons=0x7f020091;
+        public static final int signup_btn=0x7f020092;
+        public static final int spinner_ab_default_example=0x7f020093;
+        public static final int spinner_ab_disabled_example=0x7f020094;
+        public static final int spinner_ab_focused_example=0x7f020095;
+        public static final int spinner_ab_pressed_example=0x7f020096;
+        public static final int spinner_background_ab_example=0x7f020097;
+        public static final int tab_indicator_ab_example=0x7f020098;
+        public static final int tab_selected_example=0x7f020099;
+        public static final int tab_selected_focused_example=0x7f02009a;
+        public static final int tab_selected_pressed_example=0x7f02009b;
+        public static final int tab_unselected_example=0x7f02009c;
+        public static final int tab_unselected_focused_example=0x7f02009d;
+        public static final int tab_unselected_pressed_example=0x7f02009e;
+        public static final int two_page=0x7f02009f;
     }
     public static final class id {
         public static final int Calories_radio=0x7f04004a;
@@ -2141,7 +2144,7 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
          */
         public static final int[] SherlockSpinner = {
             0x010100af, 0x01010175, 0x01010176, 0x0101017b,
-            0x01010262, 0x010102ac, 0x010102ad, 0x0101043a
+            0x01010262, 0x010102ac, 0x010102ad, 0x0101041f
         };
         /**
           <p>
