@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#F0E68C"
+    android:orientation="vertical" >
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button1"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_centerHorizontal="true"
+        android:text="   Individual "
+        android:layout_marginBottom="30dp"
+        android:typeface="serif"
+        android:background="@drawable/modalbckg"
+        android:drawableTop="@drawable/individual_small" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:textStyle="bold"
+        
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_centerHorizontal="true"
+        
+        android:textSize="24dp"
+        android:text="    Serving sizes" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="30dp"
+        android:layout_marginTop="134dp"
+        android:layout_toRightOf="@+id/button2"
+        android:background="@drawable/modalbckg"
+        android:drawableTop="@drawable/comparison"
+        android:text="    Same    "
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_toLeftOf="@+id/button2"
+        android:background="@drawable/modalbckg"
+        android:drawableTop="@drawable/view_choose"
+        android:text="  Custom    "
+        android:typeface="serif"
+        android:layout_marginBottom="30dp" />
+
+    <Button
+        android:id="@+id/button_small"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignTop="@+id/button_big"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/textView1"
+        android:text="Smaller"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/small_serving" />
+
+    <Button
+        android:id="@+id/button_big"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="29dp"
+        android:layout_below="@+id/textView1"
+        android:background="@android:color/transparent"
+        android:drawableTop="@drawable/big_serving"
+        android:text="Bigger" />
+
+    <EditText
+        android:id="@+id/edittextcustom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="35dp"
+        
+        android:hint="Enter a Size in (g)"
+        android:inputType="number"
+        android:typeface="serif" />
+
+    <Button
+        android:id="@+id/computeButton"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/edittextcustom"
+        android:layout_toRightOf="@+id/edittextcustom"
+        android:background="@drawable/modalbckg"
+        android:drawableTop="@drawable/kompare"
+        android:text="      Compute       "
+        android:typeface="serif" />
+
+</RelativeLayout>

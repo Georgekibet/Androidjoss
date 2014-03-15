@@ -23,22 +23,28 @@ public class MenuListAdapter extends BaseAdapter {
 		this.mTitle = title;
 		this.mSubTitle = subtitle;
 		this.mIcon = icon;
+		
+		
 	}
 
+	
 	@Override
 	public int getCount() {
 		return mTitle.length;
 	}
+	
 
 	@Override
 	public Object getItem(int position) {
 		return mTitle[position];
 	}
+	
 
 	@Override
 	public long getItemId(int position) {
 		return position;
 	}
+	
 
 	public View getView(int position, View convertView, ViewGroup parent) {
 		// Declare Variables
@@ -67,5 +73,32 @@ public class MenuListAdapter extends BaseAdapter {
 
 		return itemView;
 	}
+	
+	public View getListView(int position, View convertView, ViewGroup parent) {
+		// Declare Variables
+		TextView nutrientname;
+		TextView nutrientValue;
+		
+
+		inflater = (LayoutInflater) context
+				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		View itemView = inflater.inflate(R.layout.cart_items, parent,
+				false);
+
+		// Locate the TextViews in drawer_list_item.xml
+		nutrientname = (TextView) itemView.findViewById(R.id.title);
+		nutrientValue = (TextView) itemView.findViewById(R.id.subtitle);
+
+		
+		
+
+		// Set the results into TextViews
+		nutrientname.setText(mTitle[position]);
+		nutrientValue.setText(mSubTitle[position]);
+
+		
+
+		return itemView;
+	}	
 
 }

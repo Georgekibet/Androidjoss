@@ -1,0 +1,121 @@
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+<RelativeLayout     android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    
+    
+    tools:context=".DashboardFragment" 
+    >
+
+    
+        <RelativeLayout
+            android:id="@+id/grayL"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin" >
+
+            <TextView
+                android:id="@+id/logotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="NutriFact"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffff"
+                android:textSize="48dp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+            
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/compare"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_below="@+id/grayL"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="23dp"
+            android:typeface="serif"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:background="@drawable/blackbutton_bg_black"
+            android:text="Compare" />
+
+        <Button
+            android:id="@+id/checkout"
+             android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@+id/compare"
+            android:layout_below="@+id/compare"
+            android:layout_marginTop="18dp"
+            android:background="@drawable/blackbutton_bg_black"
+            android:text="Summary"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="#ffffff"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/Profile"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@+id/checkout"
+            android:layout_below="@+id/checkout"
+            android:layout_marginTop="19dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/blackbutton_bg_black"
+            android:text="Profile"
+            android:textColor="#ffffff"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/history" 
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_alignLeft="@+id/Profile"
+            android:layout_below="@+id/Profile"
+            android:layout_marginTop="19dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/blackbutton_bg_black"
+            android:text="History"
+            android:textColor="#ffffff"
+            android:typeface="serif" />
+
+        <Button
+            android:id="@+id/profile2"
+            android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:layout_above="@+id/Profile"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/blackbutton_bg_black"
+            android:layout_alignLeft="@+id/checkout"
+            android:typeface="serif"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            android:text="Profile" />
+
+        <Button
+            android:id="@+id/History2"
+           android:layout_width="210dp"
+            android:layout_height="60dp"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:background="@drawable/blackbutton_bg_black"
+            android:layout_alignBottom="@+id/Profile"
+            android:typeface="serif"
+            android:textColor="#ffffff"
+            android:visibility="invisible"
+            android:layout_alignLeft="@+id/Profile"
+            android:text="History" />
+
+</RelativeLayout>
+</ScrollView>

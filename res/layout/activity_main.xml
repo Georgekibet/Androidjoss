@@ -2,60 +2,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:background="@drawable/background_app"
+    
+    tools:context=".DashboardFragment" 
+    >
+
+    <RelativeLayout
+        android:id="@+id/grayL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true" 
+        android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".DashboardFragment" >
+    android:paddingTop="@dimen/activity_vertical_margin">
 
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:src="@drawable/new_img" />
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="textEmailAddress" 
-        android:hint="Enter your email"
-        android:focusable="false"
-        />
-    
         
 
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_alignLeft="@+id/email"
+            android:layout_alignRight="@+id/email"
+            android:layout_below="@+id/email"
+             android:gravity="center"
+             android:textColor="#ffff"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/modalbckg"
+            android:ems="10"
+            android:textColorHint="#ffffff"
+            android:hint="Enter password"
+            android:inputType="textPassword"
+            android:textSize="18dp" />
 
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/email"
-        android:layout_below="@+id/email"
-        android:ems="10"
-        android:inputType="textPassword" 
-        android:hint="Enter password"/>
+        <TextView
+            android:id="@+id/logotext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            android:textSize="48dp"
+            android:typeface="serif"
+            android:text="NutriFact"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/signinTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/logotext"
+            android:layout_marginBottom="42dp"
+            android:textColor="#ffff"
+            android:textColorHint="#ffff"
+            android:layout_marginTop="40dp"
+            android:text="Sign In"
+            android:textSize="24dp"
+            android:typeface="serif"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/signinTV"
+            android:background="@drawable/modalbckg"
+            android:ems="10"
+            android:textColor="#ffff"
+            android:textColorHint="#ffffff"
+            
+            android:gravity="center"
+            android:focusable="true"
+            android:layout_centerHorizontal="true"
+            android:hint="Enter your email"
+            
+            android:inputType="textEmailAddress" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/buttonlogin"
+            style="?android:attr/buttonStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_below="@+id/password"
+            android:layout_marginTop="18dp"
+            android:layout_alignRight="@+id/password"
+            android:background="@drawable/blackbutton_bg_black"
+            android:textStyle="bold"
+            android:text="      Sign In       "
+            android:textColor="#ffff" />
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/bottom" 
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:src="@drawable/new_signup" />
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:layout_width="wrap_content">
+    <TextView 
+        android:id="@+id/registerTv"
+        android:gravity="center"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        
+        android:text="Create Account>"
+        
+        android:layout_alignParentBottom="true"
+        android:textColor="#ffff"
+        android:layout_width="fill_parent"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:background="#DCDCDC"/>
 
-    <ImageView
-        android:id="@+id/imageView3"
+    <ProgressBar
+        android:id="@+id/progressBarLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/password"
-        android:layout_alignRight="@+id/imageView2"
-        android:src="@drawable/loginnow" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:visibility="invisible"
+        android:layout_marginRight="59dp"
+        android:layout_marginTop="152dp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

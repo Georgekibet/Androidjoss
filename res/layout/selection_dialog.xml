@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    
+    android:orientation="vertical" >
+    <TextView 
+        
+     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textStyle="bold"
+    android:textSize="12dp"
+    android:text="Would you like to select this product?"/> 
+    
+    
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:gravity="center_horizontal"
+   
+    android:layout_marginTop="10dp">
+    <Button 
+    android:id="@+id/selectbuttonOk"
+    android:layout_width="fill_parent"
+    
+    android:text="Ok           "
+    android:layout_weight="1"
+    android:textColor="#ffff"
+    android:typeface="serif"
+    android:layout_height="wrap_content"/>
+     <Button 
+    android:id="@+id/selectbuttonCancel"
+    
+    android:text="Cancel "
+    android:layout_weight="1"
+    android:textColor="#ffff"
+    android:typeface="serif"
+    android:layout_marginLeft="0dp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"/>
+
+</LinearLayout>
+</LinearLayout>

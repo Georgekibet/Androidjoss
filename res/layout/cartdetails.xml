@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:src="@drawable/header_general" />
+
+        <TableLayout
+            android:id="@+id/RHE"
+            style="@style/ActionBar.Transparent.Example"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:background="#F0E68C"
+            android:padding="30dp" >
+
+            <TableRow
+                style="@style/ActionBar.Transparent.Example"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" >
+<TextView
+                    android:id="@+id/tittleTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" Cart summary"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:layout_gravity="right"
+                android:gravity="right">
+           
+                 </TableRow>
+                 
+              <TextView
+                    android:id="@+id/Increase"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Increase"
+                    android:gravity="center"
+                    android:textStyle="bold" />
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/proteinlabelInc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Protein" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/proteinIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0 " 
+                    android:visibility="invisible"/>
+                 
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+
+                     <TextView
+                    android:id="@+id/cholestrolLabelInc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cholestrol" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/cholestrolIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0" 
+                    android:visibility="invisible"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/sugarLabelInc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sugar"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/sugarIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0 " 
+                    android:visibility="invisible"/>
+
+            </TableRow>
+              <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/carbslabelInc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carbs" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/carbsIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0 " 
+                    android:visibility="invisible"/>
+
+            </TableRow>
+              <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/fatlabelInc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fat" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/fatIncrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0 " 
+                    android:visibility="invisible"/>
+
+            </TableRow>
+            
+          <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Decrease"
+              android:gravity="center"
+              android:layout_marginTop="20dp"
+              android:textStyle="bold"
+              />   
+                <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/proteinlabelDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Protein" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/proteinDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#66CD00"
+                    android:text="0 "
+                    android:visibility="invisible" />
+                 
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+
+                     <TextView
+                    android:id="@+id/cholestrolLabelDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cholestrol"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/cholestrolDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0" 
+                    android:visibility="invisible"
+                    android:background="#66CD00"/>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/sugarLabelDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="sugar"
+                    android:visibility="invisible" />
+
+                <TextView
+                    android:id="@+id/sugarDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 " 
+                    android:visibility="invisible"
+                    android:background="#66CD00"/>
+            </TableRow>
+              <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right"
+                >
+                <TextView
+                    android:id="@+id/carbslabelDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Carbs" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/carbsDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 " 
+                    android:visibility="invisible"
+                    android:background="#66CD00"/>
+            </TableRow>
+              <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp" 
+                android:gravity="right">
+                <TextView
+                    android:id="@+id/fatlabelDec"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="fat" 
+                    android:visibility="invisible"/>
+
+                <TextView
+                    android:id="@+id/fatDecrease"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 " 
+                    android:visibility="invisible"
+                    android:background="#66CD00"/>
+            </TableRow> 
+            
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp" >
+               
+            
+            
+      
+                <TextView
+                    android:id="@+id/carbscheckTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="" />
+
+                                <Button
+                    android:id="@+id/doneBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Done " />
+
+            </TableRow>
+            
+             <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+            </TableRow>
+             <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+
+                 <RadioGroup
+                android:id="@+id/ironradioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" 
+                android:orientation="horizontal">
+
+               
+            </RadioGroup>
+            </TableRow>
+             
+             <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" >
+
+            </TableRow>
+
+           
+
+        </TableLayout>
+    </LinearLayout>
+
+</ScrollView>

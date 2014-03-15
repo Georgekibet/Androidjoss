@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+     android:background="@drawable/background_app">
+
+    <RelativeLayout
+        android:id="@+id/grayL"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignParentRight="true" 
+        android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin">
+
+        
+
+        
+
+        <TextView
+            android:id="@+id/logotext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:textColor="#ffff"
+            android:textStyle="bold"
+            android:textSize="48dp"
+            android:typeface="serif"
+            android:text="NutriFact"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+      
+       
+
+
+    </RelativeLayout>
+
+
+    <Button
+        android:id="@+id/new_shopingcart"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="24dp"
+        android:text="New cart" />
+
+    <Button
+        android:id="@+id/previus"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textColor="#ffffff"
+        android:layout_marginLeft="16dp"
+        android:layout_toRightOf="@+id/new_shopingcart"
+        android:text="previus carts" />
+
+</RelativeLayout>
+	

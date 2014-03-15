@@ -1,217 +1,529 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical" 
-    android:paddingRight="40dp">
+    android:layout_height="match_parent" 
+    android:background="@drawable/background_app">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30sp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical" 
-        style="@style/ActionBar.Transparent.Example">
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
 
-        <TextView
-            android:id="@+id/text1"
-            android:layout_width="wrap_content"
+        <RelativeLayout
+            android:id="@+id/grayL"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="My preferences "
-            android:textStyle="bold"
-             android:textAppearance="?android:attr/textAppearanceLarge"/>
-    </LinearLayout>
+            android:layout_alignParentRight="true"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4sp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        style="@style/ActionBar.Transparent.Example" >
-
-        <TextView
-           
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Protein:" 
-            android:layout_marginRight="20dp"
-            android:textStyle="italic"/>
-
-        <RadioGroup
-            android:id="@+id/protain_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio0"
+            <TextView
+                android:id="@+id/logotext"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="high" />
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="Profile"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffff"
+                android:textSize="48dp"
+                android:textStyle="bold"
+                android:typeface="serif" />
 
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="low" />
-        </RadioGroup>
-    </LinearLayout>
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/logotext"
+                android:layout_alignParentBottom="true"
+                android:textColor="#ffff"
+                
+                android:text="Please select atributes to Increase/decrease"
+                android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4sp"
-        android:gravity="right"
-        android:orientation="horizontal" 
-        style="@style/ActionBar.Transparent.Example">
+        </RelativeLayout>
 
-        <TextView
+        <TableLayout
+            android:id="@+id/RHE"
             
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="carbohydrates:" 
-            android:layout_marginRight="20dp"
-            android:textStyle="italic"/>
-
-        <RadioGroup
-            android:id="@+id/Carbohydrates_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="high" />
-
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="low" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4sp"
-        android:gravity="right"
-        android:orientation="horizontal" 
-        style="@style/ActionBar.Transparent.Example">
-
-        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="3dp"
+            android:layout_weight="1"
+            android:clipChildren="true"
             
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Fat:" 
-            android:layout_marginRight="20dp"
-            android:textStyle="italic"/>
+            android:showDividers="end" >
 
-        <RadioGroup
-            android:id="@+id/fat_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio0"
+            <TableRow
+                
                 android:layout_width="wrap_content"
+                
+                android:clipChildren="true"
+                android:gravity="center"
                 android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="high" />
+                   android:layoutMode="opticalBounds">
+                   
+                
 
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
+                <TextView
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    
+                    android:id="@+id/runLabel"
+                    android:textColor="#ffff"
+                    android:textStyle="bold"
+                    android:textSize="18dp"
+                   android:typeface="serif"
+                    android:text="          " />
+
+                <ImageView
+                    android:id="@+id/hitLabel"
+                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                  android:layout_gravity="center_horizontal"
+                   
+                    android:src="@drawable/arrow_less"
+                    
+                    
+                     />
+
+                <ImageView
+                    android:id="@+id/errorLabel"
+                     android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                  android:layout_marginRight="20dp"
+                   android:layout_gravity="left"
+                    android:src="@drawable/arrow_more"
+                     />
+                
+
+            </TableRow>
+
+            <TableRow
                 android:layout_height="wrap_content"
-                android:text="low" />
-        </RadioGroup>
+                android:layout_marginTop="10dp" 
+                android:gravity="center_horizontal"
+                >
+
+                <CheckBox
+                    android:id="@+id/proteincheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffff"
+                    
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Protein" />
+
+                <RadioGroup
+                    android:id="@+id/proteinGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radioproteinless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radioproteinmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" 
+                android:gravity="center_horizontal">
+
+                <CheckBox
+                    android:id="@+id/carbscheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Carbs" 
+                    android:textColor="#ffff"/>
+
+                <RadioGroup
+                    
+                    android:id="@+id/carbsradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible">
+
+
+
+                    <RadioButton
+                        android:id="@+id/radiocarbsless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiocarbsmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+                
+                
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal" >
+
+                <CheckBox
+                    android:id="@+id/fatcheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffff"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Fat" />
+
+                <RadioGroup
+                    android:id="@+id/fatradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiofatless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiofatmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center" >
+
+                <CheckBox
+                    android:id="@+id/sugarcheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Sugar"
+                    android:textColor="#ffff" />
+
+                <RadioGroup
+                    android:id="@+id/sugarradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiosugarless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiosugarmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" 
+                android:gravity="center" >
+
+                <CheckBox
+                    android:id="@+id/cholestrolcheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="cholestrol"
+                    android:textColor="#ffff" />
+
+                <RadioGroup
+                    android:id="@+id/cholestrolradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiocholestrless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiocholmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp" >
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" 
+                android:gravity="center" >
+
+                <CheckBox
+                    android:id="@+id/vitaminAcheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#ffff"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Vitamin  A" />
+
+                <RadioGroup
+                    android:id="@+id/vitamiAradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+
+                    <RadioButton
+                        android:id="@+id/radiovitAless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiovitAmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"  >
+
+                <CheckBox
+                    android:id="@+id/caloriescheckBox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Calories" 
+                    android:textColor="#ffff"/>
+
+                <RadioGroup
+                    android:id="@+id/caloriesradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiocaloriesless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiocaloriesmore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"  >
+
+                <CheckBox
+                    android:textColor="#ffff"
+                    android:id="@+id/fibreCb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Fibre" />
+
+                <RadioGroup
+                    android:id="@+id/fibreradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiofibreless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiofibreMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" 
+                android:gravity="center" >
+
+                <CheckBox
+                    android:textColor="#ffff"
+                    android:id="@+id/potasiumCb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="potasiumCb" />
+
+                <RadioGroup
+                    android:id="@+id/potasiumradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiopotasiumless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiopotasiumMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"  >
+
+                <CheckBox
+                    android:textColor="#ffff"
+                    android:id="@+id/sodiumCb"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/checkbox_selector"
+                    android:text="Sodium" />
+
+                <RadioGroup
+                    android:id="@+id/sodiumradioGroup"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:visibility="invisible" >
+
+                    <RadioButton
+                        android:id="@+id/radiosodiumless"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        
+                        android:layout_marginRight="35dp"
+                        android:button="@drawable/radiobutton_selector"
+                        android:checked="true"
+                        android:text="" />
+
+                    <RadioButton
+                        android:id="@+id/radiosodiumMore"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radiobutton_selector"
+                        android:text="" />
+                </RadioGroup>
+            </TableRow>
+
+            <TableRow
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp" 
+                android:gravity="right">
+
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginRight="30dp"
+                    android:drawableRight="@drawable/save_button_profile_screen" />
+            </TableRow>
+        </TableLayout>
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4sp"
-        android:gravity="right"
-        android:orientation="horizontal" 
-        style="@style/ActionBar.Transparent.Example">
-
-        <TextView
-           
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Calories:"
-            android:layout_marginRight="20dp" 
-            android:textStyle="italic"/>
-
-        <RadioGroup
-            android:id="@+id/Calories_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="high" />
-
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="low" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4sp"
-        android:gravity="right"
-        android:orientation="horizontal"
-        style="@style/ActionBar.Transparent.Example" >
-
-        <TextView
-            
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Colestrol:" 
-            android:layout_marginRight="20dp"
-            android:textStyle="italic"/>
-
-        <RadioGroup
-            android:id="@+id/colestrol_radio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/radio0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="high" />
-
-            <RadioButton
-                android:id="@+id/radio1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="low" />
-        </RadioGroup>
-    </LinearLayout>
-
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/save" 
-        android:layout_gravity="right"/>
-
-</LinearLayout>
+</ScrollView>

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:background="@drawable/fields_bg"
+    android:orientation="vertical" >
+    <TextView 
+        
+     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    
+    android:textStyle="bold"
+    android:textColor="#ffff"
+    android:layout_marginBottom="10dp"
+    android:text="Enter serving size"/>
+   <EditText 
+    android:id="@+id/custom_value"
+    android:typeface="serif"
+    android:gravity="center"
+    android:layout_marginBottom="10dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
+    android:layout_width="fill_parent"
+    android:background="@drawable/modalbckg"
+    android:layout_height="40dp"
+    android:hint="Enter value"
+    android:inputType="number">
+    <requestFocus />
+    </EditText> 
+    
+    
+<LinearLayout 
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal" 
+    android:layout_marginTop="10dp">
+    <Button 
+    android:id="@+id/buttonOk"
+    android:layout_width="wrap_content"
+    android:background="@drawable/blackbutton_bg_black"
+    android:text="Ok"
+    android:textColor="#ffff"
+    android:typeface="serif"
+    android:layout_height="wrap_content"/>
+     <Button 
+    android:id="@+id/buttonCancel"
+    android:background="@drawable/blackbutton_bg_black"
+    android:text="Cancel"
+    android:textColor="#ffff"
+    android:typeface="serif"
+    android:layout_marginLeft="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+</LinearLayout>
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="30dp"
+    android:layout_marginLeft="10dp"
+    android:orientation="vertical" android:gravity="left"
+    android:background="@drawable/background_app">
+    
+    <LinearLayout 
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    >
+    
+               <TextView 
+            android:id="@+id/summary_date"
+            android:layout_width="fill_parent"
+            android:text="Thursday march 2014"
+            android:layout_marginBottom="20dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:textColor="#ffffff"/>
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/increase"
+        android:textSize="26dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        
+        android:typeface="serif"
+        
+        
+        
+        />
+
+    <ListView
+        android:id="@+id/listInc"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        >
+    </ListView>
+    
+    </LinearLayout>
+    
+        <TextView
+        android:id="@+id/textView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        
+        android:typeface="serif"
+
+        android:textSize="26dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:text="@string/decrease"
+        
+        
+         
+        />
+
+    <ListView
+        android:id="@+id/listDEc"
+        android:layout_marginLeft="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+    </ListView>
+    
+    <Button 
+        android:layout_marginTop="10dp"
+        android:id="@+id/doneButton"
+        android:text="Done"
+        android:textColor="#FFFF"
+        android:typeface="serif"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    
+</LinearLayout>

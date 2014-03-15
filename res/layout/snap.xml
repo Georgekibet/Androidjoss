@@ -1,69 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent" 
+    android:background="@drawable/background_app">
 
-    <ImageView
-        android:id="@+id/imageView1"
+    
+
+      <RelativeLayout
+            android:id="@+id/grayL"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentRight="true"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:paddingRight="@dimen/activity_horizontal_margin"
+            android:paddingTop="@dimen/activity_vertical_margin" >
+
+            <TextView
+                android:id="@+id/logotext"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:text="NutriFact"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="#ffff"
+                android:textSize="48dp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+            
+
+        </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBarScan"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageView3"
-        android:layout_alignRight="@+id/imageView3"
-        android:layout_marginBottom="26dp"
-        android:layout_marginRight="61dp"
-        android:src="@drawable/barcode_unscanned" />
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="30dp"
-        android:layout_marginTop="111dp"
-        android:src="@drawable/gestureworks" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/imageView1"
-        android:layout_marginRight="35dp"
-        android:layout_marginTop="93dp"
-        android:layout_toLeftOf="@+id/imageView1"
-        android:src="@drawable/one_page" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="43dp"
-        android:text="Take your first snap"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textStyle="italic" />
-
-    <TextView
-        android:id="@+id/productname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="18dp"
-        android:text="1. Cocacola"
-        android:visibility="invisible"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignTop="@+id/imageView1"
-        android:text="2. Pepsi"
-        android:visibility="invisible"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_centerVertical="true" />
 
 </RelativeLayout>

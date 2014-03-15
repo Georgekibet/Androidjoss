@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center_horizontal"
+    android:background="@drawable/background_app">
+    
+    <LinearLayout 
+        android:layout_marginLeft="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="History"
+        android:textSize="26dp"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        
+        android:gravity="center"
+        android:typeface="serif"
+        
+        
+        
+        />
+    <TextView
+        android:id="@+id/infotv"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+       android:textSize="14dp"
+       android:layout_marginBottom="15dp"
+       android:text="Select item to like/dislike"
+        android:textColor="#ffffff"
+        
+        android:gravity="center"
+        android:typeface="serif"
+        
+        
+        
+        />
+
+    <ListView
+        android:id="@+id/listInc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        >
+    </ListView>
+    
+    </LinearLayout>
+    
+<Button 
+    android:id="@+id/donebtn"
+    android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    android:text="done    "/>
+    
+    
+</LinearLayout>

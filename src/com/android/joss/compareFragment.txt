@@ -1,0 +1,1104 @@
+package com.android.joss;
+
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicNameValuePair;
+
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.graphics.Typeface;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.actionbarsherlock.app.SherlockFragment;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
+import com.koushikdutta.urlimageviewhelper.UrlImageViewHelper;
+
+@SuppressLint("InlinedApi")
+public class CompareFragment extends SherlockFragment implements OnClickListener{
+	
+	
+	public Dialog d;
+	TextView protein1_VALUE, protein2_VALUE, prteinlabel, cholestrolTv,cholestrol1_VALUE,
+	cholestrol2_VALUE,sugarTv, sugar1_VALUE,sugar2_VALUE, carbsTv, carbs1_VALUE, carbs2_VALUE,
+	fat, fat1_VALUE,fat2_VALUE, Calories1_VALUE, Calorieslabel, Calories2_VALUE, fibre1_VALUE,
+	fibre2_VALUE,fibre1label,name2_VALUE, vitaminAlabel, vitaminA1_VALUE, vitaminA2_VALUE,
+	sodium1_VALUE, sodium2_VALUE, sodiumlabel, potasium1_VALUE,potasuium2_VALUE,name1_VALUE
+	;
+	
+
+	int proteinpref, sugarpref,cholestrolpref, fatpref,caloriesref, vitaminApref,
+	fibrepref, potasiumpref,sodiumref,carbspref;
+	
+		
+	public String productid,votes_for=String.valueOf(0),votes_agaist=String.valueOf(0);
+	ImageView login,register;
+	EditText email,password;
+	protected String getemail;
+	protected ProgressBar progress;
+	protected String returnedString;
+	Dialog serving;
+    static interface TaskCallbacks {
+    void onPreExecute();
+    void onProgressUpdate(int percent);
+    void onCancelled();
+    void onPostExecute();
+    
+    
+  }
+ 
+  private TaskCallbacks mCallbacks;
+  private DummyTask mTask;
+	
+	//TextView carbs1,carbs2;
+	
+	//int protein_add,carb_add,fat_add,chelestrol_add;
+	 Double protein1,protein2,cholestrol_1,cholestrol_2,sugar_1,sugar_2,
+	 carbs_1,carbs_2,fat_1,fat_2,calories1,calories2,fibre1,fibre2,vitaminA1,
+	 vitaminA2,potasium1,potasium2,sodium1,sodium2,serving1,serving2;
+	 ProgressBar p;
+	 Button smallerS,biggerS,chooseServing,custom,individual,same,compareBut;
+	 TextView textchoose;
+	 EditText customED;
+	 
+	 String name1,name2;
+	 int CUSTOM_NORMAL=1;
+	
+	@SuppressLint({ "ResourceAsColor", "InlinedApi" })
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.compare, container, false);
+		((SherlockFragmentActivity) getActivity()).getSupportActionBar().hide();
+		
+		//CompareFragment c = new CompareFragment();
+		//String s=c.getTag().toString();
+		
+	//Toast.makeText(getActivity(), "my tag is"+s, Toast.LENGTH_LONG).show();
+		
+		  setRetainInstance(true);
+		  serving=new Dialog(getActivity());
+		  //serving.requestWindowFeature((int) Window.FEATURE_NO_TITLE);
+		   serving.setTitle("Prefered Serving comparison");
+		   serving.setCanceledOnTouchOutside(false);
+		
+
+		  serving.setContentView(R.layout.servingsizedialog);
+		//		       
+	     chooseServing=(Button) rootView.findViewById(R.id.buttonChooseS); 
+	     custom=(Button) serving.findViewById(R.id.button3);
+	     custom.setOnClickListener(CompareFragment.this);
+	    
+	      individual=(Button) serving.findViewById(R.id.button2);
+	      individual.setOnClickListener(CompareFragment.this);
+	      
+	     same=(Button) serving.findViewById(R.id.button1);
+	     same.setOnClickListener(CompareFragment.this);
+	     
+	     
+	     
+	     smallerS=(Button) serving.findViewById(R.id.button_small);
+	     biggerS=(Button) serving.findViewById(R.id.button_big);
+	     customED=(EditText) serving.findViewById(R.id.edittextcustom);
+	     compareBut=(Button) serving.findViewById(R.id.computeButton);
+	     compareBut.setOnClickListener(CompareFragment.this);
+	    
+		       
+		
+		
+	    Typeface font = Typeface.createFromAsset(getActivity().getAssets(), "Outwrite.ttf");
+    
+	
+	    Button   servingsize=(Button) rootView.findViewById(R.id.buttonChooseS);
+	
+		TextView textD=(TextView) serving.findViewById(R.id.textView1);
+		
+		textD.setTypeface(font);
+		//textchoose.setTypeface(font);
+		smallerS.setTypeface(font);
+		biggerS.setTypeface(font);
+		individual.setTypeface(font);
+		same.setTypeface(font);
+		//custom.setTypeface(font);
+		
+		//textchoose.setVisibility(View.INVISIBLE);
+		biggerS.setVisibility(View.INVISIBLE);
+		smallerS.setVisibility(View.INVISIBLE);
+		compareBut.setVisibility(View.INVISIBLE);
+		customED.setVisibility(View.INVISIBLE);
+		
+	    d=new Dialog(getActivity());
+		d.setContentView(R.layout.vote_popup);
+		d.setTitle("Like it?");
+		
+		 p= (ProgressBar) d.findViewById(R.id.progressBar1);
+		p.setVisibility(View.INVISIBLE);
+		
+		final ImageView vote_forB=(ImageView) d.findViewById(R.id.imageView1);
+		final ImageView vote_agaistB=(ImageView) d.findViewById(R.id.imageView2);
+		
+		Button cancel=(Button) d.findViewById(R.id.cancel_btn);
+		cancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				d.dismiss();
+			}
+		});
+		
+		chooseServing.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+			serving.show();
+				
+			}
+		});
+		
+		
+		final SharedPreferences nutrients = getActivity().getSharedPreferences
+				("storedata", FragmentActivity.MODE_PRIVATE);
+		
+		SharedPreferences prefer = getActivity().getSharedPreferences
+				("prefname", FragmentActivity.MODE_PRIVATE);
+		
+		
+		
+		
+		
+		
+
+		
+		
+		
+		proteinpref=prefer.getInt("proteinpref", 0);
+		 sugarpref=prefer.getInt("sugarpref", 0);
+		 cholestrolpref=prefer.getInt("proteinpref", 0);
+		carbspref=prefer.getInt("carbspref", 0);
+		 fatpref=prefer.getInt("fatpref", 0);
+		 caloriesref=prefer.getInt("caloriespref", 0);
+		 vitaminApref=prefer.getInt("vitaminApref", 0);
+		 fibrepref=prefer.getInt("fibrepref", 0);
+		 potasiumpref=prefer.getInt("potasiumpref", 0);
+		 sodiumref=prefer.getInt("sodiumpref", 0);
+		
+		
+		  
+		
+		 protein1=Double.parseDouble(nutrients.getString("protein1", "0"));
+		 protein2=Double.parseDouble(nutrients.getString("protein2","0"));
+		 
+		 Toast.makeText(getActivity(), String.valueOf(protein1), Toast.LENGTH_LONG).show();
+		
+		 cholestrol_1=Double.parseDouble(nutrients.getString("cholestrol", "0"));
+		 cholestrol_2=Double.parseDouble(nutrients.getString("cholestrol2","0"));
+		
+		 sugar_1=Double.parseDouble(nutrients.getString("sugar", "0"));
+		 sugar_2=Double.parseDouble(nutrients.getString("sugar2","0"));
+		
+	     carbs_1=Double.parseDouble(nutrients.getString("carbs", "0"));
+		 carbs_2=Double.parseDouble(nutrients.getString("carbs2","0"));
+		
+	     fat_1=Double.parseDouble(nutrients.getString("fat", "0"));
+		 fat_2=Double.parseDouble(nutrients.getString("fat2","0"));
+		 
+		 calories1=Double.parseDouble(nutrients.getString("calories1", "0"));
+		 calories2=Double.parseDouble(nutrients.getString("calories2","0"));
+		 
+		 fibre1=Double.parseDouble(nutrients.getString("fibre1", "0"));
+		 fibre2=Double.parseDouble(nutrients.getString("fibre2","0"));
+		
+		 vitaminA1=Double.parseDouble(nutrients.getString("vitaminA1", "0"));
+		 vitaminA2=Double.parseDouble(nutrients.getString("vitaminA2","0"));
+		 
+		 potasium1=Double.parseDouble(nutrients.getString("potasium1", "0"));
+		 potasium2=Double.parseDouble(nutrients.getString("potasium2","0"));
+		 
+		 sodium1=Double.parseDouble(nutrients.getString("sodium1", "0"));
+		 sodium2=Double.parseDouble(nutrients.getString("sodium2","0"));
+		 
+		 name1=nutrients.getString("name1", "0");
+		 name2=nutrients.getString("name2","0");
+		 
+		 serving1=Double.parseDouble(nutrients.getString("serving1", "1.0"));
+		 serving2=Double.parseDouble(nutrients.getString("serving2","1.0"));
+		
+		
+		
+		
+		
+		String url1=nutrients.getString("url1", "null"+" ");
+		String url2=nutrients.getString("url2", "null"+" ");
+
+		
+		
+		
+		
+		//Toast.makeText(getActivity(), url1+url2, Toast.LENGTH_LONG).show();
+		
+		 protein1_VALUE=(TextView) rootView.findViewById(R.id.protein1);
+		 protein2_VALUE=(TextView) rootView.findViewById(R.id.proteinIncrease);
+		 prteinlabel=(TextView) rootView.findViewById(R.id.proteinlabel);
+		
+		 cholestrolTv=(TextView) rootView.findViewById(R.id.cholestrolLabel);
+		 
+		cholestrol1_VALUE=(TextView) rootView.findViewById(R.id.cholestrol1);
+		 cholestrol2_VALUE=(TextView) rootView.findViewById(R.id.cholestrolIncrease);
+		
+		 sugarTv=(TextView) rootView.findViewById(R.id.sugarLabel);
+		 sugar1_VALUE=(TextView) rootView.findViewById(R.id.sugar1);
+		 sugar2_VALUE=(TextView) rootView.findViewById(R.id.sugarIncrease);
+		
+		 carbsTv=(TextView) rootView.findViewById(R.id.carbslabel);
+		 carbs1_VALUE=(TextView) rootView.findViewById(R.id.carbs1);
+		carbs2_VALUE=(TextView) rootView.findViewById(R.id.carbsIncrease);
+		
+		 fat=(TextView) rootView.findViewById(R.id.fatlabel);
+		 fat1_VALUE=(TextView) rootView.findViewById(R.id.fat1);
+		 fat2_VALUE=(TextView) rootView.findViewById(R.id.fatIncrease);
+		
+		 Calories1_VALUE=(TextView) rootView.findViewById(R.id.calories1);
+		 Calorieslabel=(TextView) rootView.findViewById(R.id.calorieslabel);
+		 Calories2_VALUE=(TextView) rootView.findViewById(R.id.caloriesIncrease);
+		
+		 fibre1_VALUE=(TextView) rootView.findViewById(R.id.fibre1);
+		 fibre2_VALUE=(TextView) rootView.findViewById(R.id.fibreIncrease);
+		 fibre1label=(TextView) rootView.findViewById(R.id.fibrelabel);
+		
+		name1_VALUE=(TextView) rootView.findViewById(R.id.name1);
+		         //name1_VALUE.setText(name1);
+		 name2_VALUE=(TextView) rootView.findViewById(R.id.nameIncrease);
+		         //name2_VALUE.setText(name2);
+		
+		vitaminAlabel=(TextView) rootView.findViewById(R.id.VitaminAlabel);
+		 vitaminA1_VALUE=(TextView) rootView.findViewById(R.id.vitaminA1);
+		 vitaminA2_VALUE=(TextView) rootView.findViewById(R.id.VitaminAIncrease);
+		
+		
+		TextView sodium1_VALUE=(TextView) rootView.findViewById(R.id.sodium1);
+		TextView sodium2_VALUE=(TextView) rootView.findViewById(R.id.sodiumIncrease);
+		TextView sodiumlabel=(TextView) rootView.findViewById(R.id.sodiumlabel);
+		
+		TextView potasium1_VALUE=(TextView) rootView.findViewById(R.id.pottasium1);
+		TextView potasuium2_VALUE=(TextView) rootView.findViewById(R.id.potassiumIncrease);
+		TextView potasiumlabel=(TextView) rootView.findViewById(R.id.potassiumlabel);
+		
+		TextView votes1_VALUE=(TextView) rootView.findViewById(R.id.Votes1TV);
+		TextView votes2_VALUE=(TextView) rootView.findViewById(R.id.Votes2TV);
+		
+		Button   getfirst=(Button) rootView.findViewById(R.id.getButton1);
+		Button   getsecond=(Button) rootView.findViewById(R.id.getButton2);
+		Button   back=(Button) rootView.findViewById(R.id.backButton);
+		
+		
+		ImageView item1IV=(ImageView) rootView.findViewById(R.id.product1imageView);
+		ImageView item2IV=(ImageView) rootView.findViewById(R.id.product2imageView);
+		
+		ImageView like=(ImageView) d.findViewById(R.id.imageView1);
+		ImageView dislike=(ImageView) d.findViewById(R.id.imageView2);
+		
+		UrlImageViewHelper.setUrlDrawable(item1IV, url1);
+		UrlImageViewHelper.setUrlDrawable(item2IV, url2);
+		
+
+	   onNormalizeDefault(serving1, serving2, protein1, protein2);
+		
+		
+		final SharedPreferences visibility = getActivity().getSharedPreferences(
+		        "visibility", FragmentActivity.MODE_PRIVATE); 
+		
+		
+	   int proteinVisibility=visibility.getInt("proteinvisible", 0);
+	   int carbsVisibility=visibility.getInt("carbsvisible", 0);
+	   int sugarVisibility=visibility.getInt("sugarvisible", 0);
+	   int cholestrolVisibility=visibility.getInt("cholestrolvisible", 0);
+	   int fatVisibility=visibility.getInt("fatvisible", 0);
+	   int caloriesVisibility=visibility.getInt("caloriesvisible", 0);
+	   int vitaminAVisibility=visibility.getInt("vitaminAvisible", 0);
+	   int fibreVisibility=visibility.getInt("fibrevisible", 0);
+	   int potasiumVisibility=visibility.getInt("potasiumvisible", 0);
+	   int sodiumVisibility=visibility.getInt("sodiumvisible", 0);
+	   
+	   
+	   
+	  final SharedPreferences methodFlagg = getActivity().getSharedPreferences
+					("method", FragmentActivity.MODE_PRIVATE);
+	  
+	/*  Editor editor=methodFlagg.edit();
+             editor.putInt("chosen", 0);
+	          editor.commit();*/
+	  
+	  int methodDecide=methodFlagg.getInt("chosen", 0);
+	  
+	  Double customVal=Double.parseDouble(methodFlagg.getString("custom", "1.0"));
+	  
+	  if (methodDecide==1) {
+		  serving1=onNormalizeDefault(serving1, serving2, protein1, protein2)[2];
+		  serving1=onNormalizeDefault(serving1, serving2, protein1, protein2)[3];
+       protein1=onNormalizeDefault(serving1, serving2, protein1, protein2)[0];
+       protein2=onNormalizeDefault(serving1, serving2, protein1, protein2)[1];
+       
+       sugar_1=onNormalizeDefault(serving1, serving2, sugar_1, sugar_2)[0];
+       sugar_2=onNormalizeDefault(serving1, serving2, sugar_1, sugar_2)[1];
+       
+       cholestrol_1=onNormalizeDefault(serving1, serving2, cholestrol_1, cholestrol_2)[0];
+       cholestrol_2=onNormalizeDefault(serving1, serving2, cholestrol_1, cholestrol_2)[1];
+       
+       carbs_1=onNormalizeDefault(serving1, serving2, carbs_1, carbs_2)[0];
+       carbs_2=onNormalizeDefault(serving1, serving2, carbs_1, carbs_2)[1];
+       
+       fat_1=onNormalizeDefault(serving1, serving2, fat_1, fat_2)[0];
+       fat_2=onNormalizeDefault(serving1, serving2, fat_1, fat_2)[1];
+       
+       calories1=onNormalizeDefault(serving1, serving2, calories1, calories2)[0];
+       calories2=onNormalizeDefault(serving1, serving2, calories2, calories2)[1];
+       
+       fibre1=onNormalizeDefault(serving1, serving2, fibre1, fibre2)[0];
+       fibre2=onNormalizeDefault(serving1, serving2, fibre1, fibre2)[1];
+       
+       vitaminA1=onNormalizeDefault(serving1, serving2, vitaminA1, vitaminA2)[0];
+       vitaminA2=onNormalizeDefault(serving1, serving2, vitaminA2, vitaminA2)[1];
+       
+       potasium1=onNormalizeDefault(serving1, serving2, potasium1, potasium2)[0];
+       potasium2=onNormalizeDefault(serving1, serving2, potasium1, potasium2)[1];
+       
+       sodium1=onNormalizeDefault(serving1, serving2, sodium1, sodium2)[0];
+       sodium2=onNormalizeDefault(serving1, serving2, sodium1, sodium2)[1];
+		
+	}
+	
+	  else if (methodDecide==2) {
+		serving1=customVal;
+		serving2=customVal;
+	protein1=onNormalizeDeCustom(customVal, serving1,serving2, protein1, protein2)[0];
+	protein2=onNormalizeDeCustom(customVal, serving2,serving2, protein1, protein2)[1];
+	
+	  
+	cholestrol_1=onNormalizeDeCustom(customVal, serving1,serving2, cholestrol_1, protein2)[0];
+	cholestrol_2=onNormalizeDeCustom(customVal, serving2,serving2, cholestrol_1, protein2)[1];
+	  
+	carbs_1=onNormalizeDeCustom(customVal, serving1,serving2, carbs_1, carbs_2)[0];
+	carbs_2=onNormalizeDeCustom(customVal, serving2,serving2, carbs_1, carbs_2)[1];
+	
+	  
+	sugar_1=onNormalizeDeCustom(customVal, serving1,serving2, sugar_1, sugar_2)[0];
+	sugar_2=onNormalizeDeCustom(customVal, serving2,serving2, sugar_1, sugar_2)[1];
+	
+	  
+	fat_1=onNormalizeDeCustom(customVal, serving1,serving2, fat_1, fat_2)[0];
+	fat_2=onNormalizeDeCustom(customVal, serving2,serving2, fat_1, fat_2)[1];
+	
+	  
+	calories1=onNormalizeDeCustom(customVal, serving1,serving2, calories1, calories2)[0];
+	calories2=onNormalizeDeCustom(customVal, serving2,serving2, calories1, calories2)[1];
+	
+	  
+	fibre1=onNormalizeDeCustom(customVal, serving1,serving2, fibre1, fibre2)[0];
+	fibre2=onNormalizeDeCustom(customVal, serving2,serving2, fibre1, fibre2)[1];
+	
+	  
+	vitaminA1=onNormalizeDeCustom(customVal, serving1,serving2, vitaminA1, vitaminA2)[0];
+	vitaminA2=onNormalizeDeCustom(customVal, serving2,serving2, vitaminA1, vitaminA2)[1];
+	
+	  
+	potasium1=onNormalizeDeCustom(customVal, serving1,serving2,potasium1, potasium2)[0];
+	potasium2=onNormalizeDeCustom(customVal, serving2,serving2, potasium1, potasium2)[1];
+	
+	  
+	sodium1=onNormalizeDeCustom(customVal, serving1,serving2, sodium1, sodium2)[0];
+	sodium2=onNormalizeDeCustom(customVal, serving2,serving2, sodium1, sodium2)[1];
+	
+	
+	
+	}
+	  
+ else if(methodDecide==0){
+	 protein1=Double.parseDouble(nutrients.getString("protein1", "0"));
+	 protein2=Double.parseDouble(nutrients.getString("protein2","0"));
+	 
+	 Toast.makeText(getActivity(), String.valueOf(protein1), Toast.LENGTH_LONG).show();
+	
+	 cholestrol_1=Double.parseDouble(nutrients.getString("cholestrol", "0"));
+	 cholestrol_2=Double.parseDouble(nutrients.getString("cholestrol2","0"));
+	
+	 sugar_1=Double.parseDouble(nutrients.getString("sugar", "0"));
+	 sugar_2=Double.parseDouble(nutrients.getString("sugar2","0"));
+	
+     carbs_1=Double.parseDouble(nutrients.getString("carbs", "0"));
+	 carbs_2=Double.parseDouble(nutrients.getString("carbs2","0"));
+	
+     fat_1=Double.parseDouble(nutrients.getString("fat", "0"));
+	 fat_2=Double.parseDouble(nutrients.getString("fat2","0"));
+	 
+	 calories1=Double.parseDouble(nutrients.getString("calories1", "0"));
+	 calories2=Double.parseDouble(nutrients.getString("calories2","0"));
+	 
+	 fibre1=Double.parseDouble(nutrients.getString("fibre1", "0"));
+	 fibre2=Double.parseDouble(nutrients.getString("fibre2","0"));
+	
+	 vitaminA1=Double.parseDouble(nutrients.getString("vitaminA1", "0"));
+	 vitaminA2=Double.parseDouble(nutrients.getString("vitaminA2","0"));
+	 
+	 potasium1=Double.parseDouble(nutrients.getString("potasium1", "0"));
+	 potasium2=Double.parseDouble(nutrients.getString("potasium2","0"));
+	 
+	 sodium1=Double.parseDouble(nutrients.getString("sodium1", "0"));
+	 sodium2=Double.parseDouble(nutrients.getString("sodium2","0"));
+	 
+	 name1=nutrients.getString("name1", "0");
+	 name2=nutrients.getString("name2","0");
+	 
+	// serving1=Double.parseDouble(nutrients.getString("serving1", "1.0"));
+	// serving2=Double.parseDouble(nutrients.getString("serving2","1.0"));
+	
+	
+	
+	
+	
+	//String url1=nutrients.getString("url1", "null"+" ");
+	//String url2=nutrients.getString("url2", "null"+" ");
+
+	
+	}	  
+	   
+	   
+	
+	   //rePaintPref(pref, nutrient1, nutrient2, nutrinet1TV, nutrinet2TV);
+	//pass in parameters to thee recolorAnalysed method for re_coloring as per user preference
+//onNormalizeDefault(serving1, serving2, protein1, protein2);
+	  
+
+	  name1_VALUE.setText(name1+"\n"+String.valueOf(serving1)+"g");
+	  name2_VALUE.setText(name2+"\n"+String.valueOf(serving2)+"g");
+ 
+recolorAnalysed(proteinpref, protein1, protein2,protein1_VALUE,protein2_VALUE);
+recolorAnalysed(sugarpref, sugar_1, sugar_2,sugar1_VALUE,sugar2_VALUE);
+recolorAnalysed(cholestrolpref, cholestrol_1, cholestrol_2,cholestrol1_VALUE,cholestrol2_VALUE);
+recolorAnalysed(carbspref, carbs_1, carbs_2,carbs1_VALUE,carbs2_VALUE);
+recolorAnalysed(fatpref, fat_1, fat_2,fat1_VALUE,fat2_VALUE);
+
+recolorAnalysed(caloriesref, calories1, calories2,Calories1_VALUE,Calories2_VALUE);
+recolorAnalysed(fibrepref, fibre1, fibre2,fibre1_VALUE,fibre2_VALUE);
+recolorAnalysed(vitaminApref, vitaminA1, vitaminA2,vitaminA1_VALUE,vitaminA2_VALUE);
+recolorAnalysed(potasiumpref, potasium1, potasium2,potasium1_VALUE,potasuium2_VALUE);
+recolorAnalysed(sodiumref, sodium1, sodium2,sodium1_VALUE,sodium2_VALUE);
+		
+
+
+//call onPrefar to set visibility
+
+onPrefar(proteinVisibility, prteinlabel, protein1_VALUE, protein2_VALUE);
+onPrefar(cholestrolVisibility, cholestrolTv, cholestrol1_VALUE, cholestrol2_VALUE);
+onPrefar(sugarVisibility, sugarTv, sugar1_VALUE, sugar2_VALUE);
+onPrefar(carbsVisibility, carbsTv, carbs1_VALUE, carbs2_VALUE);
+onPrefar(fatVisibility, fat, fat1_VALUE, fat2_VALUE);
+onPrefar(caloriesVisibility, Calorieslabel, Calories1_VALUE, Calories2_VALUE);
+onPrefar(vitaminAVisibility, vitaminAlabel, vitaminA1_VALUE, vitaminA2_VALUE);
+onPrefar(fibreVisibility, fibre1label, fibre1_VALUE, fibre2_VALUE);
+onPrefar(potasiumVisibility, potasiumlabel, potasium1_VALUE, potasuium2_VALUE);
+onPrefar(sodiumVisibility, sodiumlabel, sodium1_VALUE, sodium2_VALUE);
+
+//onPrefar(proteinpref, prteinlabel, protein1_VALUE, protein2_VALUE);
+
+
+		
+		final   SharedPreferences track = getActivity().getSharedPreferences
+					("global", FragmentActivity.MODE_PRIVATE);
+			
+			Editor track_edit=track.edit();
+			
+			track_edit.putInt("track_add", 1);
+			
+			track_edit.commit();
+
+	   
+		//When first item scanned is picked
+    getfirst.setOnClickListener(new OnClickListener() {
+
+		 
+		  
+		@Override
+		public void onClick(View v) {
+			
+			productid=nutrients.getString("product1code", " ");
+			
+		createCart(protein1-protein2, carbs_1-carbs_2,sugar_1-sugar_2,cholestrol_1-cholestrol_2,
+					fat_1-fat_2,calories1-calories2,fibre1-fibre2,
+					vitaminA1-vitaminA2,potasium1-potasium2,sodium1-sodium2);
+			
+			
+			final SharedPreferences check = getActivity().getSharedPreferences
+					("check_double", FragmentActivity.MODE_PRIVATE);
+	            
+			        
+			        
+			        
+			
+	int track=check.getInt("flag", 0);
+	if (track==1) {
+		//d.show();
+	}
+			
+		    moveTonextFrag(); 
+         
+         
+            
+           
+           
+		}
+	});
+	   
+	getsecond.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				
+				productid=nutrients.getString("product2code", " ");						
+	createCart(protein2-protein1, carbs_2-carbs_1,sugar_2-sugar_1,cholestrol_2-cholestrol_1,
+			fat_2-fat_1,calories2-calories1,fibre2-fibre1,vitaminA2-vitaminA1,potasium2-potasium1,
+			sodium2-sodium1);
+			    moveTonextFrag(); 
+			    
+
+			
+			  
+				
+				
+			}
+		});
+	back.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			Fragment newFragment = new DashboardFragment();
+			FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+			// Replace whatever is in the fragment_container view with this fragment,
+			// and add the transaction to the back stack
+			transaction.replace(R.id.content_frame, newFragment);
+			transaction.addToBackStack(null);
+
+			// Commit the transaction
+			transaction.commit();					
+		
+         
+			
+			
+		}
+	});
+	
+    vote_forB.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		  public void onClick(View v) {
+			votes_for=String.valueOf(1);
+			p.setVisibility(View.VISIBLE);
+			
+			//pass the fetched codes online to retrieve product info.
+        new DummyTask().execute(productid,votes_for,votes_agaist);
+             //d.dismiss();
+
+			
+		}
+	   });
+    
+    vote_forB.setOnClickListener(new OnClickListener() {
+		
+		@Override
+		  public void onClick(View v) {
+			votes_for=String.valueOf(1);
+        new DummyTask().execute(productid,votes_for,votes_agaist);
+         p.setVisibility(View.VISIBLE);
+          //d.dismiss();
+			
+		}
+	   });
+	
+    final SharedPreferences resetMethod = getActivity().getSharedPreferences
+			("method", FragmentActivity.MODE_PRIVATE);	
+    Editor  e=resetMethod.edit();
+            e.putInt("chosen", 1);
+            e.commit();
+		return rootView;
+	}
+
+	
+	
+	
+	//Method to deal with data returned from asynctask
+	  //protected void fetchFromAsynctask(String jstring) {}	
+	
+	
+	
+  protected void createCart(Double protein12,Double carbs_12,Double sugar_12, Double cholestrol_12, Double fat_12,
+		  Double calories_12,Double fibre_12,Double vitaminA_12,Double potasium_12,Double sodium_12) {
+	final SharedPreferences check = getActivity().getSharedPreferences
+					("check_double", FragmentActivity.MODE_PRIVATE);
+	
+	int track=check.getInt("flag", 0);
+	if (track==1) {
+		
+	
+	
+	  Double protein=protein12;
+	  Double carb= carbs_12;
+	  Double sugar=sugar_12;
+	  Double cholestrol=cholestrol_12;
+	  Double fat=fat_12;
+	  Double calories=calories_12;
+	  Double fibre=fibre_12;
+	  Double vitaminA=vitaminA_12;
+	  Double potasium=potasium_12;
+	  Double sodium=sodium_12;
+	  
+	
+	final Date cTime=new Date();
+	//final SimpleDateFormat sdf= new SimpleDateFormat("EEE,MMM d,yyyy HH:mm:ss ");
+	final SimpleDateFormat sdf= new SimpleDateFormat("EEE,MMM d,yyyy");
+	final SimpleDateFormat timeOnly=new SimpleDateFormat(" HH:mm:ss ");		
+					
+	String date=sdf.format(cTime);
+	String time=sdf.format(cTime);
+
+	Toast.makeText(getSherlockActivity(), "today is: " +date, Toast.LENGTH_SHORT).show();
+					
+	 DBAdapter db = new DBAdapter(getSherlockActivity());
+			     db.openDatabase();	
+			      
+			      
+	 db.insertRecord(date, String.valueOf(protein), String.valueOf(carb), String.valueOf(sugar),
+			 String.valueOf(cholestrol), String.valueOf(fat),String.valueOf(calories),String.valueOf(fibre),
+			 String.valueOf(vitaminA),String.valueOf(potasium),String.valueOf(sodium));
+			      
+			      
+			  	//Toast.makeText(getSherlockActivity(),  String.valueOf(i), Toast.LENGTH_LONG).show();
+			      
+			     
+	 db.close();
+	 d.show();	     
+	
+	 Editor edit=check.edit();
+	 edit.putInt("flag", 0);
+	 edit.commit();
+	}
+	
+	else{
+		Toast.makeText(getSherlockActivity(),"You have already picked"+ "\n " +"kindly scan the next product", 
+				Toast.LENGTH_SHORT).show();
+	}
+	
+			     
+	}
+
+
+	
+
+
+    
+    
+
+   protected void moveTonextFrag() {
+	// Create new fragment and transaction
+	Fragment newFragment = new DashboardFragment();
+	FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+	// Replace whatever is in the fragment_container view with this fragment,
+	// and add the transaction to the back stack
+	transaction.replace(R.id.content_frame, newFragment);
+	transaction.addToBackStack(null);
+
+	// Commit the transaction
+	transaction.commit();
+
+		
+	}
+
+   
+   public void onPrefar(int Pref,TextView label,TextView nutrient1, TextView Nutrint2){
+	   if (Pref==0) {
+		label.setVisibility(View.INVISIBLE);
+		nutrient1.setVisibility(View.INVISIBLE);
+		Nutrint2.setVisibility(View.INVISIBLE);
+	}
+	   else if (Pref==1) {
+		   label.setVisibility(View.VISIBLE);
+			nutrient1.setVisibility(View.VISIBLE);
+			Nutrint2.setVisibility(View.VISIBLE);
+	}
+   }
+
+
+
+
+
+/**method to perform recoloring textfiels acording to preference and coloring
+ * Takes 5 arguments, the preference, the textfields and the two nutrients for first and second*/
+public void recolorAnalysed(int pref, Double protein12,
+		Double protein22,TextView firstProduct,TextView secondProduct) {
+		
+		
+		TextView carbs1=firstProduct;
+		TextView carbs2=secondProduct;
+		Double protein1=protein12;
+		Double protein2=protein22;
+		int proteinpref=pref;
+		
+		carbs1.setText(String.valueOf(protein1));
+		
+		carbs2.setText(String.valueOf(protein2));
+		
+		
+		
+		if (protein1>protein2&&proteinpref==1) {
+			  
+			   carbs1.setBackgroundResource(R.color.android_green);
+			  // carbs2.setBackgroundResource(R.color.android_red);
+		}
+		 if(protein1>protein2&&proteinpref==0) {
+		    
+			//carbs1.setBackgroundResource(R.color.android_red);
+			carbs2.setBackgroundResource(R.color.android_green);
+	      }
+		 if(protein1<protein2&&proteinpref==0) {
+		    
+			 carbs1.setBackgroundResource(R.color.android_green);
+			   //carbs2.setBackgroundResource(R.color.android_red);
+			   }
+		 if(protein1<protein2&&proteinpref==1) {
+		    
+			 //carbs1.setBackgroundResource(R.color.android_red);
+			   carbs2.setBackgroundResource(R.color.android_green);
+			   }
+		 
+		if (protein1==protein2) {
+			//carbs1.setBackgroundResource(R.color.android_green);
+		  // carbs2.setBackgroundResource(R.color.android_green);
+		} 
+		   
+		   
+		   
+	}
+
+public Double[] onNormalizeDefault(Double serving1,Double serving2, 
+		                       Double nutrient1,Double nutrient2){
+	
+	DecimalFormat dtime = new DecimalFormat("#.####"); 
+	if (serving1<serving2&&nutrient1!=0&&nutrient2!=0) {
+		
+          serving2=serving1;
+
+    
+                                          
+     //x1= Double.valueOf(dtime.format(x1));
+        nutrient1=Double.valueOf(dtime.format((nutrient1/serving1)*serving1));
+		nutrient2=Double.valueOf(dtime.format((nutrient2/serving2)*serving1));
+		
+Toast.makeText(getActivity(), "Nomalised protein to"+
+" "+String.valueOf(String.format( "Value of a: %.4f",nutrient2)), Toast.LENGTH_LONG).show();
+	}
+	else if (serving1>serving2&&nutrient1!=0&&nutrient2!=0) {
+		nutrient1=Double.valueOf(dtime.format((nutrient1/serving1)*serving2));
+		nutrient2=(nutrient2/serving2)*serving2;
+		//serving2=serving2;
+		serving1=serving2;
+		
+	}
+Double nutr[]={nutrient1,nutrient2,serving1,serving2};
+	return nutr;
+}
+
+
+public Double[] onNormalizeDeCustom(Double valueNormal,Double serving1, Double serving2,
+		Double nutrient1,Double nutrient2){
+	
+	DecimalFormat dtime = new DecimalFormat("#.####"); 
+	nutrient1=Double.valueOf(dtime.format((nutrient1/serving1)*valueNormal));
+	nutrient2=Double.valueOf(dtime.format((nutrient2/serving2)*valueNormal));
+	Double nutr[]={nutrient1,nutrient2};
+	
+	return nutr;
+	
+}
+
+
+	private void fetchFromAsynctask() {
+      d.dismiss();// TODO Auto-generated method stub
+		
+	}
+	
+
+	
+ 
+	
+	 /**
+	   * A dummy task that performs some (dumb) background work and
+	   * proxies progress updates and results back to the Activity.
+	   *
+	   * Note that we need to check if the callbacks are null in each
+	   * method in case they are invoked after the Activity's and
+	   * Fragment's onDestroy() method have been called.
+	   */
+	  
+	  
+	  private class DummyTask extends AsyncTask<String, Integer, String> {
+	 
+	    @Override
+	    protected void onPreExecute() {
+	      if (mCallbacks != null) {
+	        mCallbacks.onPreExecute();
+	      }
+	    }
+	    
+	   
+
+	 
+	    /**
+	     * Note that we do NOT call the callback object's methods
+	     * directly from the background thread, as this could result
+	     * in a race condition.
+	     */
+	    @Override
+	    protected String doInBackground(String... params) {
+	     /* for (int i = 0; !isCancelled() && i < 100; i++) {
+	        SystemClock.sleep(100);
+	        publishProgress(i);
+	      }*/
+	    	
+	    	String dataFrmjson = "";
+	    	String result = null;
+	    	InputStream is = null;
+	    	StringBuilder sb=null;
+	    	HttpClient httpclient;
+	    	HttpPost httppost;
+	    	HttpResponse response;
+	    	HttpEntity entity;
+
+	    	ArrayList<NameValuePair> nameValuePairs;
+	    	String p_code=params[0];
+	    	String for_vote=params[1];
+	    	String agaist_vote=params[2];
+	    	
+	    	//ArrayList<SearchResults> results1 = new ArrayList<SearchResults>();
+
+	    	try{
+	    		//String sex = ch2.toString();
+	    	    httpclient = new DefaultHttpClient();
+	    	    nameValuePairs = new ArrayList<NameValuePair>(2);
+	    	    nameValuePairs.add(new BasicNameValuePair("productid", p_code.trim()));
+	    	    nameValuePairs.add(new BasicNameValuePair("votes_for", for_vote.trim()));
+	    	    nameValuePairs.add(new BasicNameValuePair("votes_against",agaist_vote.trim()));
+	    	   
+	    	    
+	    	   // httppost = new HttpPost("http://10.0.2.2/api/login.php");
+	    	    httppost = new HttpPost("http://jossomar.netai.net/votes_insert.php");
+	    	    httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+	    	    response = httpclient.execute(httppost);
+	    	   	entity = response.getEntity();
+	    	   	is = entity.getContent();
+	    	   
+	    	   	//Toast.makeText(getApplicationContext(), "pass", Toast.LENGTH_SHORT).show();
+	    	   }catch(Exception e){
+	    	       Log.e("log_tag", "Error in http connection"+e.toString());
+	    	  }
+	    	//convert response to string
+	    	try{
+	    	    BufferedReader reader = new BufferedReader(new InputStreamReader(is,"iso-8859-1"),8);
+	    	     sb = new StringBuilder();
+	    	     sb.append(reader.readLine() + "\n");
+	    	     String line="0";
+	    	     while ((line = reader.readLine()) != null) {
+	    	                    sb.append(line + "\n");
+	    	      }
+	    	      is.close();
+	    	     
+	    	      
+	    	      result=sb.toString();
+	    	      
+	    	     
+	    	}
+	    	catch(Exception e){
+	    	    	 
+	    	      }
+
+	    	   	
+	    	
+	      return result;
+	      
+	    }
+	 
+	    @Override
+	    protected void onProgressUpdate(Integer... percent) {
+	      if (mCallbacks != null) {
+	        mCallbacks.onProgressUpdate(percent[0]);
+	      }
+	    }
+	 
+	    @Override
+	    protected void onCancelled() {
+	      if (mCallbacks != null) {
+	        mCallbacks.onCancelled();
+	      }
+	    }
+	 
+	    @Override
+	    protected void onPostExecute(String result) {
+	      if (mCallbacks != null) {
+	    	 //returnedString=result;
+	        mCallbacks.onPostExecute();
+	        super.onPostExecute(result);
+	        p.setVisibility(View.INVISIBLE);
+	        d.dismiss();
+	        
+	       // progress.setVisibility(View.INVISIBLE);
+	        
+	        fetchFromAsynctask();
+	      }
+	      else fetchFromAsynctask();
+	    }
+
+
+
+
+		
+	  }
+
+
+
+
+
+
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.button1:
+	final SharedPreferences methodFlag = getActivity().getSharedPreferences
+			("method", FragmentActivity.MODE_PRIVATE);
+	Editor edit=methodFlag.edit();
+	     edit.putInt("chosen", 1);
+	     edit.commit();
+	     
+			reCreateThis();
+
+		serving.dismiss();
+		break;
+		
+		case R.id.button3:
+			//textchoose.setVisibility(View.VISIBLE);
+			biggerS.setVisibility(View.VISIBLE);
+			smallerS.setVisibility(View.VISIBLE);
+			compareBut.setVisibility(View.VISIBLE);
+			customED.setVisibility(View.VISIBLE);
+			individual.setVisibility(View.INVISIBLE);
+			custom.setVisibility(View.INVISIBLE);
+			same.setVisibility(View.INVISIBLE);
+			
+			break;
+		case R.id.button2:
+			
+			final SharedPreferences methodFlaggg = getActivity().getSharedPreferences
+			("method", FragmentActivity.MODE_PRIVATE);
+
+
+	        Editor edittt=methodFlaggg.edit();
+	       edittt.putInt("chosen", 0);
+	       edittt.commit();
+	        reCreateThis();
+			
+			serving.dismiss();
+			break;
+		case R.id.computeButton:
+			individual.setVisibility(View.VISIBLE);
+			custom.setVisibility(View.VISIBLE);
+			same.setVisibility(View.VISIBLE);
+			
+	     EditText value=(EditText) serving.findViewById(R.id.edittextcustom);
+	     final SharedPreferences methodFlagg = getActivity().getSharedPreferences
+					("method", FragmentActivity.MODE_PRIVATE);
+	    
+	    
+			Editor editt=methodFlagg.edit();
+			     editt.putInt("chosen", 2);
+			     editt.putString("custom", value.getText().toString());
+			     editt.commit();
+			     
+			
+			
+			biggerS.setVisibility(View.INVISIBLE);
+			smallerS.setVisibility(View.INVISIBLE);
+			compareBut.setVisibility(View.INVISIBLE);
+			customED.setVisibility(View.INVISIBLE);
+			serving.dismiss();
+			reCreateThis();
+          break;
+		default:
+			break;
+		}
+		
+	}
+
+
+
+
+	/**
+	 * 
+	 */
+	public void reCreateThis() {
+		//Go to preferences screen
+	 	Fragment recreatefrag = new CompareFragment();
+	 	//preferencFragment.setArguments(args)
+	 	FragmentTransaction transaction = getFragmentManager().beginTransaction();
+
+	 	// Replace whatever is in the fragment_container view with this fragment,
+	 	// and add the transaction to the back stack
+	 	transaction.replace(R.id.content_frame, recreatefrag);
+	 	transaction.addToBackStack(null);
+
+	 	// Commit the transaction
+	 	transaction.commit();
+	}
+	
+	
+	
+		   
+
+	public Double createCartSummaryFirst(Double nutrient1, Double nutrient2){
+		
+		Double diference=nutrient1-nutrient2;
+		
+		return diference;
+	}
+public String[] createCartSummarySecond(){
+	String[] cart={};
+	return cart;
+	}
+}
